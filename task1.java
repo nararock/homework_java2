@@ -7,11 +7,13 @@ public class task1 {
         StringBuilder strBuild = new StringBuilder();
         for (int i = 0; i < enterArray.length; i++) {
             String[] temp = enterArray[i].split(":");
-            strBuild.append(temp[0] + " = ");
-            strBuild.append(temp[1]);
-            if (i != enterArray.length - 1) {
-                strBuild.append(" and ");
+            if (!temp[1].equals("null")) {
+                strBuild.append(temp[0] + " = ");
+                strBuild.append("\"" + temp[1] + "\" and ");
             }
+        }
+        if (strBuild.subSequence(strBuild.length() - 4, strBuild.length() - 1).equals("and")) {
+            strBuild = strBuild.delete(strBuild.length() - 4, strBuild.length() - 1);
         }
         String answer = "select * from students where " + strBuild.toString();
         System.out.print(answer);
